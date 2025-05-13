@@ -6,7 +6,7 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       padding: 20px;
-      width: 300px;
+      width: 350px;
       background: #ffffff;
       color: #1a1a1a;
     }
@@ -19,7 +19,7 @@
     .search-container {
       margin-bottom: 15px;
     }
-    input[type="text"] {
+    input[type="text"], select {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -29,7 +29,7 @@
       box-sizing: border-box;
       transition: border-color 0.3s;
     }
-    input[type="text"]:focus {
+    input[type="text"]:focus, select:focus {
       outline: none;
       border-color: #0a66c2;
       box-shadow: 0 0 0 2px rgba(10, 102, 194, 0.1);
@@ -46,6 +46,12 @@
     .radio-group, .checkbox-group {
       display: grid;
       gap: 8px;
+      margin-bottom: 15px;
+    }
+    .location-group {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
       margin-bottom: 15px;
     }
     label {
@@ -81,6 +87,33 @@
     button:hover {
       background-color: #004182;
     }
+    .collapsible {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      background-color: #f5f7fa;
+    }
+    .collapsible:hover {
+      background-color: #e8f0fe;
+    }
+    .collapsible-content {
+      display: none;
+      padding: 8px;
+    }
+    .collapsible-content.active {
+      display: block;
+    }
+    .expand-icon {
+      font-size: 12px;
+      transition: transform 0.3s;
+    }
+    .collapsible.active .expand-icon {
+      transform: rotate(180deg);
+    }
   </style>
 </head>
 <body>
@@ -88,6 +121,19 @@
   
   <div class="search-container">
     <input type="text" id="jobTitle" placeholder="Enter job title" />
+  </div>
+
+  <div class="options-section">
+    <div class="options-title">Location</div>
+    <div class="location-group">
+      <input type="text" id="location" placeholder="City, State, or Country" />
+      <select id="radius">
+        <option value="10">10mi</option>
+        <option value="25" selected>25mi</option>
+        <option value="50">50mi</option>
+        <option value="100">100mi</option>
+      </select>
+    </div>
   </div>
 
   <div class="options-section">
@@ -99,18 +145,49 @@
     </div>
   </div>
 
-  <div class="options-section">
-    <div class="options-title">Work Location</div>
-    <div class="checkbox-group">
-      <label class="checkbox-label"><input type="checkbox" name="location" value="remote"> Remote</label>
-      <label class="checkbox-label"><input type="checkbox" name="location" value="onsite"> On-Site</label>
-      <label class="checkbox-label"><input type="checkbox" name="location" value="hybrid"> Hybrid</label>
-    </div>
+  <div class="collapsible">
+    <span>Additional Filters</span>
+    <span class="expand-icon">▼</span>
   </div>
 
-  <div class="options-section">
-    <div class="checkbox-group">
-      <label class="checkbox-label"><input type="checkbox" id="easyApply"> Easy Apply Only</label>
+  <div class="collapsible-content">
+    <div class="options-section">
+      <div class="options-title">Work Location</div>
+      <div class="checkbox-group">
+        <label class="checkbox-label"><input type="checkbox" name="location" value="remote"> Remote</label>
+        <label class="checkbox-label"><input type="checkbox" name="location" value="onsite"> On-Site</label>
+        <label class="checkbox-label"><input type="checkbox" name="location" value="hybrid"> Hybrid</label>
+      </div>
+    </div>
+
+    <div class="options-section">
+      <div class="options-title">Experience Level</div>
+      <div class="checkbox-group">
+        <label class="checkbox-label"><input type="checkbox" name="experience" value="1"> Internship</label>
+        <label class="checkbox-label"><input type="checkbox" name="experience" value="2"> Entry Level</label>
+        <label class="checkbox-label"><input type="checkbox" name="experience" value="3"> Associate</label>
+        <label class="checkbox-label"><input type="checkbox" name="experience" value="4"> Mid-Senior Level</label>
+        <label class="checkbox-label"><input type="checkbox" name="experience" value="5"> Director</label>
+        <label class="checkbox-label"><input type="checkbox" name="experience" value="6"> Executive</label>
+      </div>
+    </div>
+
+    <div class="options-section">
+      <div class="options-title">Job Type</div>
+      <div class="checkbox-group">
+        <label class="checkbox-label"><input type="checkbox" name="jobType" value="F"> Full-time</label>
+        <label class="checkbox-label"><input type="checkbox" name="jobType" value="P"> Part-time</label>
+        <label class="checkbox-label"><input type="checkbox" name="jobType" value="C"> Contract</label>
+        <label class="checkbox-label"><input type="checkbox" name="jobType" value="T"> Temporary</label>
+        <label class="checkbox-label"><input type="checkbox" name="jobType" value="V"> Volunteer</label>
+        <label class="checkbox-label"><input type="checkbox" name="jobType" value="I"> Internship</label>
+      </div>
+    </div>
+
+    <div class="options-section">
+      <div class="checkbox-group">
+        <label class="checkbox-label"><input type="checkbox" id="easyApply"> Easy Apply Only</label>
+      </div>
     </div>
   </div>
 
