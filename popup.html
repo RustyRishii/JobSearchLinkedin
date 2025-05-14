@@ -171,9 +171,12 @@
     <div class="options-section">
       <div class="options-title">Time Posted</div>
       <div class="radio-group">
-        <label><input type="radio" name="time" value="r8640" checked> Just Posted</label>
-        <label><input type="radio" name="time" value="r86400"> Past 24 Hours</label>
-        <label><input type="radio" name="time" value="r604800"> Past Week</label>
+        <!-- <label><input type="radio" name="time" value="r60" data-label="Just posted">Just posted</label> -->
+        <label><input type="radio" name="time" value="r600" data-label="Just posted" checked>Just posted</label>
+        <label><input type="radio" name="time" value="r1800" data-label="30 mins ago">30 mins ago</label>
+        <label><input type="radio" name="time" value="r3600" data-label="1 hr ago">1 hr ago</label>
+        <label><input type="radio" name="time" value="r86400" data-label="Past 24 hours">Past 24 Hours</label>
+        <label><input type="radio" name="time" value="r604800" data-label="Past week">Past Week</label>
       </div>
     </div>
 
@@ -186,7 +189,8 @@
 
     <div class="collapsible">
       <span>Additional Filters</span>
-      <span class="expand-icon">▼</span>
+      <span class="expand-icon"></span>
+
     </div>
 
     <div class="collapsible-content">
@@ -227,6 +231,7 @@
     </div>
 
     <button id="searchBtn">Search Jobs</button>
+    <div style="margin-top: 10px; display: flex; justify-content: center; text-align: center;">Short cut: Alt + L</div>
     <script src="popup.js"></script>
   </body>
 

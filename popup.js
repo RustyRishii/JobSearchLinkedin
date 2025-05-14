@@ -209,7 +209,14 @@ function performSearch() {
   }
   
   // const radius = document.getElementById('radius').value;
-  const timeRange = document.querySelector('input[name="time"]:checked').value;
+  const timeRangeElement = document.querySelector('input[name="time"]:checked');
+  const timeRange = timeRangeElement.value;
+  
+  // LinkedIn time filter values are already set correctly in HTML:
+  // r1800 = 30 minutes (Just Posted)
+  // r86400 = 24 hours (Past 24 Hours)
+  // r604800 = 1 week (Past Week)
+  
   const workLocations = Array.from(document.querySelectorAll('input[name="location"]:checked'))
     .map(checkbox => checkbox.value);
   const experienceLevels = Array.from(document.querySelectorAll('input[name="experience"]:checked'))
